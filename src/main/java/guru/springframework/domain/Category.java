@@ -1,5 +1,6 @@
 package guru.springframework.domain;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -7,6 +8,7 @@ import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+@Entity
 public class Category {
     @Id
     @GeneratedValue(strategy = IDENTITY)
