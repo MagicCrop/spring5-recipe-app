@@ -6,12 +6,14 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Data
 @EqualsAndHashCode(exclude = {"recipe"})
 @Entity
 public class Ingredient {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private String description;
     private BigDecimal amount;

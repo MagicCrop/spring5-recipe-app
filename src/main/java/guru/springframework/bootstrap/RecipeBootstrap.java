@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static guru.springframework.domain.Difficulty.*;
+
 @Slf4j
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
@@ -105,7 +107,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         guacRecipe.setDescription("Perfect Guacamole");
         guacRecipe.setPrepTime(10);
         guacRecipe.setCookTime(0);
-        guacRecipe.setDifficulty(Difficulty.EASY);
+        guacRecipe.setDifficulty(EASY);
         guacRecipe.setDirections("1 Cut avocado, remove flesh: Cut the avocados in half. Remove seed. Score the inside of the avocado with a blunt knife and scoop out the flesh with a spoon" +
                 "\n" +
                 "2 Mash with a fork: Using a fork, roughly mash the avocado. (Don't overdo it! The guacamole should be a little chunky.)" +
@@ -151,7 +153,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         tacosRecipe.setDescription("Spicy Grilled Chicken Taco");
         tacosRecipe.setCookTime(9);
         tacosRecipe.setPrepTime(20);
-        tacosRecipe.setDifficulty(Difficulty.MODERATE);
+        tacosRecipe.setDifficulty(MODERATE);
         
         tacosRecipe.setDirections("1 Prepare a gas or charcoal grill for medium-high, direct heat.\n" +
                 "2 Make the marinade and coat the chicken: In a large bowl, stir together the chili powder, oregano, cumin, sugar, salt, garlic and orange zest. Stir in the orange juice and olive oil to make a loose paste. Add the chicken to the bowl and toss to coat all over.\n" +

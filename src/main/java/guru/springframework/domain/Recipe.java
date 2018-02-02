@@ -6,11 +6,14 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Data
 @Entity
 public class Recipe {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
     
     private String description;
@@ -23,7 +26,7 @@ public class Recipe {
     @Lob
     private String directions;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    @OneToMany(cascade = ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients = new HashSet<>();
     
     @Lob
@@ -32,7 +35,7 @@ public class Recipe {
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
     
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = ALL)
     private Notes notes;
     
     @ManyToMany
