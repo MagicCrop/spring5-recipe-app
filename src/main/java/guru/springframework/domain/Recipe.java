@@ -1,19 +1,21 @@
 package guru.springframework.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.GenerationType.IDENTITY;
-
-@Data
+/**
+ * Created by jt on 6/13/17.
+ */
+@Getter
+@Setter
 @Entity
 public class Recipe {
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String description;
@@ -26,7 +28,7 @@ public class Recipe {
     @Lob
     private String directions;
     
-    @OneToMany(cascade = ALL, mappedBy = "recipe")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients = new HashSet<>();
     
     @Lob
@@ -35,7 +37,7 @@ public class Recipe {
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
     
-    @OneToOne(cascade = ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
     
     @ManyToMany
