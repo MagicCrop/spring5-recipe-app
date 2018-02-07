@@ -18,7 +18,6 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class UnitOfMeasureRepositoryIT {
-
     @Autowired
     UnitOfMeasureRepository unitOfMeasureRepository;
 
@@ -41,5 +40,4 @@ public class UnitOfMeasureRepositoryIT {
 
         assertEquals("Cup", uomOptional.get().getDescription());
     }
-
 }

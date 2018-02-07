@@ -42,6 +42,7 @@ public class RecipeServiceImplTest {
         recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
+
     @Test
     public void getRecipeByIdTest() throws Exception {
         Recipe recipe = new Recipe();
@@ -56,7 +57,7 @@ public class RecipeServiceImplTest {
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, never()).findAll();
     }
-
+  
     @Test
     public void getRecipeCoomandByIdTest() throws Exception {
         Recipe recipe = new Recipe();
@@ -87,10 +88,9 @@ public class RecipeServiceImplTest {
         when(recipeRepository.findAll()).thenReturn(receipesData);
 
         Set<Recipe> recipes = recipeService.getRecipes();
-
+      
         assertEquals(recipes.size(), 1);
         verify(recipeRepository, times(1)).findAll();
         verify(recipeRepository, never()).findById(anyLong());
     }
-
 }
