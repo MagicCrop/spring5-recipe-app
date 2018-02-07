@@ -33,5 +33,4 @@ public class CategoryTest {
     @Test
     public void getRecipes() throws Exception {
     }
-
 }
