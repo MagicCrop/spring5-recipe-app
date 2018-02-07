@@ -8,30 +8,29 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class UnitOfMeasureCommandToUnitOfMeasureTest {
+    private static final String DESCRIPTION = "description";
+    private static final Long LONG_VALUE = new Long(1L);
 
-    public static final String DESCRIPTION = "description";
-    public static final Long LONG_VALUE = new Long(1L);
-
-    UnitOfMeasureCommandToUnitOfMeasure converter;
+    private UnitOfMeasureCommandToUnitOfMeasure converter;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         converter = new UnitOfMeasureCommandToUnitOfMeasure();
 
     }
 
     @Test
-    public void testNullParamter() throws Exception {
+    public void testNullParameter() {
         assertNull(converter.convert(null));
     }
 
     @Test
-    public void testEmptyObject() throws Exception {
+    public void testEmptyObject() {
         assertNotNull(converter.convert(new UnitOfMeasureCommand()));
     }
 
     @Test
-    public void convert() throws Exception {
+    public void convert() {
         //given
         UnitOfMeasureCommand command = new UnitOfMeasureCommand();
         command.setId(LONG_VALUE);
@@ -46,5 +45,4 @@ public class UnitOfMeasureCommandToUnitOfMeasureTest {
         assertEquals(DESCRIPTION, uom.getDescription());
 
     }
-
 }
