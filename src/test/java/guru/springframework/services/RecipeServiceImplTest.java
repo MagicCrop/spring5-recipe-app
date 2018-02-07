@@ -1,5 +1,6 @@
 package guru.springframework.services;
 
+
 import guru.springframework.domain.Recipe;
 import guru.springframework.repositories.RecipeRepository;
 import org.junit.Before;
@@ -11,17 +12,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
+import static org.mockito.Mockito.*;
 
 public class RecipeServiceImplTest {
-    @Mock
-    private RecipeRepository recipeRepository;
-    
     private RecipeServiceImpl recipeService;
     
+    @Mock
+    private
+    RecipeRepository recipeRepository;
+    
+    
     @Before
-    public void setup() {
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
         
         recipeService = new RecipeServiceImpl(recipeRepository);
@@ -29,14 +31,16 @@ public class RecipeServiceImplTest {
     
     @Test
     public void getRecipes() {
+        
         Recipe recipe = new Recipe();
-        HashSet<Recipe> recipes = new HashSet<>();
-        recipes.add(recipe);
-        given(recipeService.getRecipes()).willReturn(recipes);
+        HashSet<Recipe> receipesData = new HashSet<>();
+        receipesData.add(recipe);
         
-        Set<Recipe> result = recipeService.getRecipes();
+        when(recipeService.getRecipes()).thenReturn(receipesData);
         
-        assertThat(result).isEqualTo(recipes);
-        then(recipeRepository).should().findAll();
+        Set<Recipe> recipes = recipeService.getRecipes();
+        
+        assertThat(recipes).hasSize(1);
+        verify(recipeRepository, times(1)).findAll();
     }
 }
