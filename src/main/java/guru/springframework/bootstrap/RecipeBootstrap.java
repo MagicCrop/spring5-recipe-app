@@ -1,6 +1,10 @@
 package guru.springframework.bootstrap;
 
-import guru.springframework.domain.*;
+import guru.springframework.domain.Category;
+import guru.springframework.domain.Ingredient;
+import guru.springframework.domain.Notes;
+import guru.springframework.domain.Recipe;
+import guru.springframework.domain.UnitOfMeasure;
 import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
@@ -15,7 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static guru.springframework.domain.Difficulty.*;
+import static guru.springframework.domain.Difficulty.EASY;
+import static guru.springframework.domain.Difficulty.MODERATE;
 
 @Slf4j
 @Component
@@ -144,6 +149,10 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         guacRecipe.getCategories().add(americanCategory);
         guacRecipe.getCategories().add(mexicanCategory);
         
+        guacRecipe.setUrl("http://www.simplyrecipes.com/recipes/perfect_guacamole/");
+        guacRecipe.setServings(4);
+        guacRecipe.setSource("Simply Recipes");
+        
         //add to return list
         recipes.add(guacRecipe);
         
@@ -201,6 +210,10 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         
         tacosRecipe.getCategories().add(americanCategory);
         tacosRecipe.getCategories().add(mexicanCategory);
+        
+        tacosRecipe.setUrl("http://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
+        tacosRecipe.setServings(4);
+        tacosRecipe.setSource("Simply Recipes");
         
         recipes.add(tacosRecipe);
         return recipes;
