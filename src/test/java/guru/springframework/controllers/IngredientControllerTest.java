@@ -43,7 +43,7 @@ public class IngredientControllerTest {
         controller = new IngredientController(ingredientService, recipeService, unitOfMeasureService);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
-
+  
     @Test
     public void testListIngredients() throws Exception {
         //given
