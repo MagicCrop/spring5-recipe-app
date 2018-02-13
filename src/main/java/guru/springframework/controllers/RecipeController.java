@@ -21,24 +21,25 @@ import javax.validation.Valid;
 public class RecipeController {
 
     private static final String RECIPE_RECIPEFORM_URL = "recipe/recipeform";
-    private final RecipeService recipeService;
 
+    private final RecipeService recipeService;
+    
     public RecipeController(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
 
     @GetMapping("/recipe/{id}/show")
     public String showById(@PathVariable String id, Model model){
-
+        
         model.addAttribute("recipe", recipeService.findById(new Long(id)));
-
+        
         return "recipe/show";
     }
 
     @GetMapping("recipe/new")
     public String newRecipe(Model model){
         model.addAttribute("recipe", new RecipeCommand());
-
+        
         return "recipe/recipeform";
     }
 
@@ -61,7 +62,7 @@ public class RecipeController {
         }
 
         RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
-
+        
         return "redirect:/recipe/" + savedCommand.getId() + "/show";
     }
 
